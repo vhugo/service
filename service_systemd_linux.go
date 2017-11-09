@@ -42,7 +42,7 @@ func (s *systemd) String() string {
 }
 
 // Systemd services should be supported, but are not currently.
-var errNoUserServiceSystemd = errors.New("User services are not supported on systemd.")
+var errNoUserServiceSystemd = errors.New("User services are not supported on systemd")
 
 func (s *systemd) configPath() (cp string, err error) {
 	if s.Option.bool(optionUserService, optionUserServiceDefault) {
@@ -166,8 +166,7 @@ ExecStart={{.Path|cmdEscape}}{{range .Arguments}} {{.|cmd}}{{end}}
 {{if .UserName}}User={{.UserName}}{{end}}
 {{if .ReloadSignal}}ExecReload=/bin/kill -{{.ReloadSignal}} "$MAINPID"{{end}}
 {{if .PIDFile}}PIDFile={{.PIDFile|cmd}}{{end}}
-Restart=always
-RestartSec=120
+Restart=on-failure
 EnvironmentFile=-/etc/sysconfig/{{.Name}}
 
 [Install]

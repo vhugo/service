@@ -16,8 +16,6 @@ import (
 	"regexp"
 	"testing"
 	"time"
-
-	"github.com/kardianos/service"
 )
 
 const runAsServiceArg = "RunThisAsService"
